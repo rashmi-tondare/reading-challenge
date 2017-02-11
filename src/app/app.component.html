@@ -1,3 +1,54 @@
-<h1>
-  {{title}}
-</h1>
+<!-- Wrapper -->
+<div id="wrapper">
+
+  <!-- Header -->
+  <header id="header">
+    <div class="logo">
+      <span class="icon fa-heart"></span>
+    </div>
+    <div class="content">
+      <div class="inner">
+        <h1>The Reading Challenge!</h1>
+        <p>
+          <!--[-->For all you bibliophiles out there,
+          <!--]--><br />
+          <!--[-->Take the challenge and read from genres that you've never read before!
+          <!--]-->
+        </p>
+      </div>
+    </div>
+    <nav>
+      <ul *ngIf="!loggedInUser">
+        <li><a href="#sign-in">Sign in</a></li>
+      </ul>
+      <ul *ngIf="loggedInUser">
+        <li><a href="#challenge-list">Start Now</a></li>
+        <li><a href="#create">Build Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <div id="main">
+
+    <!-- Sign In -->
+    <article id="sign-in">
+      <app-sign-in></app-sign-in>
+    </article>
+
+    <!-- Sign In -->
+    <article id="challenge-list">
+      <app-challenge-list></app-challenge-list>
+    </article>
+
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p class="copyright">&copy; Ministry of Magic
+  </footer>
+
+</div>
+
+<!-- BG -->
+<div id="bg"></div>

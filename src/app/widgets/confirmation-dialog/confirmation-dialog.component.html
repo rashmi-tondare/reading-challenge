@@ -1,0 +1,10 @@
+<h1 md-dialog-title class="dialog-text-color">{{title}}</h1>
+<div md-dialog-content class="dialog-text-color">{{message}}</div>
+<div md-dialog-actions>
+  <button md-button *ngIf="option1" (click)="option1Click()">
+    <span class="dialog-text-color">{{option1}}</span>
+  </button>
+  <button md-button *ngIf="option2" (click)="option2Click()">
+    <span class="dialog-text-color">{{option2}}</span>
+  </button>
+</div>
