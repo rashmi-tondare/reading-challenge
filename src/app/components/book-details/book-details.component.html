@@ -1,0 +1,16 @@
+<br>
+<input type="text" placeholder="Book Name" [(ngModel)]="appService.completedChallenge.book_name">
+<br>
+<input type="text" placeholder="Book Author" [(ngModel)]="appService.completedChallenge.book_author">
+<br>
+<table style="table-layout: fixed; width: 100%;">
+  <tr style="background: transparent; border: 0px;">
+    <td>
+      <material-datepicker placeholder="Start Date" [(date)]="appService.completedChallenge.start_date_object" [dateFormat]="dateFormat"></material-datepicker>
+    </td>
+    <td>
+      <material-datepicker placeholder="End Date" [(date)]="appService.completedChallenge.end_date_object" [dateFormat]="dateFormat"></material-datepicker>
+    </td>
+  </tr>
+</table>
+<button class="center-button" (click)="saveBookDetails()">Save</button>

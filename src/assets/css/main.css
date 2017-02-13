@@ -1592,3 +1592,8 @@
 		body.is-loading #footer {
 			opacity: 0;
 		}
+
+.center-button {
+  margin: 0 auto;
+  display: block;
+}

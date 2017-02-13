@@ -1,5 +1,9 @@
 <md-list>
-  <md-list-item *ngFor="let item of items | async">
-    <md-checkbox (change)="changeStatus($event)">{{item.book_prompt}}</md-checkbox>
-  </md-list-item>
+  <div *ngFor="let item of items">
+    <md-checkbox (change)="changeStatus($event, item)" [(checked)]="item.completed">
+      {{item.book_prompt}}
+    </md-checkbox>
+    <br><a *ngIf="item.completed" (click)="viewMore(item)" style="color: white">View More</a>
+    <br><br>
+  </div>
 </md-list>

@@ -1,3 +1,5 @@
+import { AppService } from './services/app.service';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { ChallengeListComponent } from './components/challenge-list/challenge-list.component';
 import { AuthService } from './services/auth.service';
 import { UtilityService } from './services/utility.service';
@@ -11,6 +13,8 @@ import { AppComponent } from './app.component';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
+import { DatepickerModule } from 'angular2-material-datepicker';
+import { BuildNowComponent } from './components/build-now/build-now.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -26,7 +30,9 @@ export const firebaseConfig = {
     AppComponent,
     SignInComponent,
     ConfirmationDialogComponent,
-    ChallengeListComponent
+    ChallengeListComponent,
+    BookDetailsComponent,
+    BuildNowComponent
   ],
   entryComponents: [
     ConfirmationDialogComponent
@@ -35,12 +41,14 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    DatepickerModule,
     AngularFireModule.initializeApp(firebaseConfig),
     MaterialModule.forRoot()
   ],
   providers: [
     UtilityService,
-    AuthService
+    AuthService,
+    AppService
   ],
   bootstrap: [AppComponent]
 })
