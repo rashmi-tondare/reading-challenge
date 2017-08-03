@@ -76,6 +76,7 @@ export class AuthService {
     })
       .then(a => {
         window.location.href = '/';
+        console.log('success', a);
       })
       .catch(e => {
         this.utilityService.displayErrorDialog(e.message);

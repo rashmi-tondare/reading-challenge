@@ -5,14 +5,14 @@ import { AuthService } from './../../services/auth.service';
 import { Challenge } from './../../models/challenge.model';
 import { QueryConstants } from './../../constants';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-challenge-list',
   templateUrl: './challenge-list.component.html',
   styleUrls: ['./challenge-list.component.css']
 })
-export class ChallengeListComponent implements OnInit {
+export class ChallengeListComponent {
 
   items: Challenge[];
 
@@ -21,25 +21,18 @@ export class ChallengeListComponent implements OnInit {
     private appService: AppService,
     private snackbar: MdSnackBar) { }
 
-  ngOnInit() {
-    this.af.database.list(QueryConstants.LIST_CHALLENGES, {
-      query: {
-        created_by: QueryConstants.CREATED_BY_ADMIN
-      }
-    })
+  public initList() {
+    this.af.database.list(QueryConstants.LIST_CHALLENGES)
       .subscribe(challenges => {
         this.items = challenges;
 
-        this.af.database.list(QueryConstants.LIST_COMPLETED_CHALLENGES, {
-          query: {
-            user_id: this.authService.loggedInUser.uid
-          }
-        })
+        this.af.database.list(QueryConstants.LIST_COMPLETED_CHALLENGES)
           .subscribe(items => {
             this.appService.completedChallenges = items as CompletedChallenge[];
             if (this.appService.completedChallenges && this.appService.completedChallenges.length > 0) {
               for (let completedChallenge of this.appService.completedChallenges) {
-                let index = this.items.findIndex(temp => temp.id === completedChallenge.challenge_id);
+                let index = this.items.findIndex(temp => completedChallenge.user_id === this.authService.loggedInUser.uid &&
+                  temp.id === completedChallenge.challenge_id);
                 if (index > -1) {
                   this.items[index].completed = true;
                 }

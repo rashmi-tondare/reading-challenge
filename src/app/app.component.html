@@ -22,7 +22,7 @@
         <li><a href="#sign-in">Sign in</a></li>
       </ul>
       <ul *ngIf="loggedInUser">
-        <li><a href="#challenge-list">Start Now</a></li>
+        <li><a href="#challenge-list" (click)="initChallengeList()">Start Now</a></li>
         <li><a href="#create">Build Now</a></li>
       </ul>
     </nav>
@@ -38,7 +38,7 @@
 
     <!-- View list -->
     <article id="challenge-list">
-      <app-challenge-list></app-challenge-list>
+      <app-challenge-list #challengeList ></app-challenge-list>
     </article>
 
     <!-- Create challenge -->
